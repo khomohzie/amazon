@@ -5,6 +5,7 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from 'react-router-dom';
 import { useStateValue } from './helpers/StateProvider';
 import { auth } from './firebase';
+import { getUsername } from './helpers/username'
 
 const Header = () => {
 
@@ -15,6 +16,8 @@ const Header = () => {
             auth.signOut();
         }
     }
+
+    const displayName = user ? getUsername(user.email) : '';
 
     return (
         <div className="header">
@@ -37,7 +40,7 @@ const Header = () => {
                 <Link to={!user && "/login"}>
                     <div onClick={handleAuthentication} className="header__option">
                         <span className="header__optionLineOne">
-                            Hello {user ? user.email : 'Guest'}
+                            Hello {user ? displayName : 'Guest'}
                         </span>
                         <span className="header__optionLineTwo">
                             {user ? 'Sign Out' : 'Sign In'}

@@ -5,6 +5,7 @@ import './MobileHeader.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from './helpers/StateProvider';
 import { auth } from './firebase';
+import { getUsername } from './helpers/username'
 
 const MobileHeader = () => {
 
@@ -15,6 +16,8 @@ const MobileHeader = () => {
             auth.signOut();
         }
     }
+
+    const displayName = user ? getUsername(user.email) : '';
 
     return (
         <div className="mobile-header">
@@ -45,7 +48,7 @@ const MobileHeader = () => {
                         <Link to={!user && "/login"}>
                             <div onClick={handleAuthentication} className="mobile-header_option">
                                 <span className="mobile-header_optionLineOne">
-                                    Hello {user ? user.email : 'Guest'}
+                                    Hello {user ? displayName : 'Guest'}
                                 </span>
                                 <span className="mobile-header_optionLineTwo">
                                     {user ? 'Sign Out' : 'Sign In'}
