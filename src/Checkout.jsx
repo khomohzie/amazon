@@ -21,7 +21,7 @@ const Checkout = () => {
                 />
 
                 <div>
-                    <h5>Hello, {user ? displayName : ''}</h5>
+                    <h5>Hello, {user ? displayName : 'Guest'}</h5>
                     <h3 className="checkout__title">Your Shopping Basket</h3>
 
                     {basket.map((item, i) => (
