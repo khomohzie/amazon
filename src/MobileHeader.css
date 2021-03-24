@@ -1,66 +1,64 @@
-.header {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #131921;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+.mobile-header {
+    margin-bottom: 4.4rem;
 }
 
-.header__logo {
+.nav-color {
+    background-color: #131921;
+}
+
+.mobile-header_logo {
     width: 100px;
     object-fit: contain;
     margin: 0 20px;
     margin-top: 18px;
 }
 
-.header__search {
+.mobile-header_search {
     display: flex;
     flex: 1;
     align-items: center;
     border-radius: 24px;
 }
   
-.header__searchInput {
+.mobile-header_searchInput {
     height: 12px;
     padding: 10px;
     border: none;
     width: 100%;
 }
   
-.header__searchIcon {
+.mobile-header_searchIcon {
     padding: 5px;
     height: 22px !important;
     background-color: #cd9042;
 }
 
-.header__optionLineOne {
+.mobile-header_optionLineOne {
     font-size: 10px;
 }
   
-.header__optionLineTwo {
+.mobile-header_optionLineTwo {
     font-size: 13px;
     font-weight: 800;
 }
   
-.header__optionBasket {
+.mobile-header_optionBasket {
     display: flex;
     align-items: center;
     color: white;
 }
   
-.header__basketCount {
+.mobile-header_basketCount {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.header__nav {
+.mobile-header_nav {
     display: flex;
     justify-content: space-evenly;
 }
 
-.header__option {
+.mobile-header_option {
     display: flex;
     flex-direction: column;
     margin-left: 10px;
