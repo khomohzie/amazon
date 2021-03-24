@@ -4,10 +4,17 @@ import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import './MobileHeader.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from './helpers/StateProvider';
+import { auth } from './firebase';
 
 const MobileHeader = () => {
 
-    const [{ basket }, dispatch] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
+
+    const handleAuthentication = () => {
+        if (user) {
+            auth.signOut();
+        }
+    }
 
     return (
         <div className="mobile-header">
@@ -35,14 +42,16 @@ const MobileHeader = () => {
 
                     <div className="mobile-header_nav">
 
-                        <div className="mobile-header_option">
-                            <span className="mobile-header_optionLineOne">
-                                Hello Guest
-                            </span>
-                            <span className="mobile-header_optionLineTwo">
-                                Sign In
-                            </span>
-                        </div>
+                        <Link to={!user && "/login"}>
+                            <div onClick={handleAuthentication} className="mobile-header_option">
+                                <span className="mobile-header_optionLineOne">
+                                    Hello {user ? user.email : 'Guest'}
+                                </span>
+                                <span className="mobile-header_optionLineTwo">
+                                    {user ? 'Sign Out' : 'Sign In'}
+                                </span>
+                            </div>
+                        </Link>
 
                         <div className="mobile-header_option">
                             <span className="mobile-header_optionLineOne">
