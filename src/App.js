@@ -8,6 +8,11 @@ import Login from './Login';
 import { useEffect } from 'react';
 import { auth } from './firebase';
 import { useStateValue } from './helpers/StateProvider';
+import Payment from './Payment';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+
+const promise = loadStripe('pk_test_51IZD3mD7HGxo5kkroeSGZw88dst0ewoyoPkst9zaDPAIgyMLVeqAI7yqNz2u6a4DP6LcdTFi1Uv3TtYgqA4SaTkA00yqWs6YA5');
 
 function App() {
 
@@ -53,6 +58,13 @@ function App() {
           <Route path="/checkout">
             <Layout />
             <Checkout />
+          </Route>
+
+          <Route path="/payment">
+            <Layout />
+            <Elements stripe={promise}>
+              <Payment />
+            </Elements>
           </Route>
 
           <Route path="*" render={() => <div className="text-center p-5"><h1>Oops! You're lost</h1></div>} />
